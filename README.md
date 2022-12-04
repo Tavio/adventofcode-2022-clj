@@ -21,3 +21,4 @@ the Free Software Foundation, either version 2 of the License, or (at your
 option) any later version, with the GNU Classpath Exception which is available
 at https://www.gnu.org/software/classpath/license.html.
 # adventofcode-2022-clj
+# adventofcode-2022-clj
