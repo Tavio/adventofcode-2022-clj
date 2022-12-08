@@ -112,6 +112,11 @@
     )
   )
 
+(defn prewalk-fn [node-id tree f]
+  (cond
+    )
+  )
+
 (defn prewalk
   "Produces a list of tree starting from node-id in pre order"
   [node-id tree]
@@ -133,7 +138,7 @@
         [_ calculated-tree] (calculate-sizes :0 tree)]
     (->> calculated-tree
          (prewalk :0)
-         (filter #(not (nil? (:children %))))
+         (filter #(not (nil? (:children %)))) ; directories only
          (map #(:size %))
          (filter #(< % 100000))
          (reduce +)
@@ -150,7 +155,7 @@
         ]
     (->> calculated-tree
          (prewalk :0)
-         (filter #(not (nil? (:children %))))
+         (filter #(not (nil? (:children %)))) ; directories only
          (map #(:size %))
          (filter #(>= % to-delete))
          (apply min))
