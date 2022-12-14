@@ -48,7 +48,7 @@
         (recur limit-y limit-x new-i new-j (into m {k neighbours}))))))
 
 (defn update-costs
-  "Returns costs updated with any shorter paths found to curr's unvisisted neighbors by using curr's shortest path"
+  "Returns costs updated with any shorter paths found to curr's unvisited neighbors by using curr's shortest path"
   [g costs costs-hash curr]
   (let [curr-cost (get costs curr)]
     (reduce-kv
