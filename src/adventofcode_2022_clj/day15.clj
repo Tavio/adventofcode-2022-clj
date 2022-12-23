@@ -27,7 +27,9 @@
 (defn covered-by [row [[sensor-x sensor-y] radius]]
   (let [dist-x-remaining (- radius (Math/abs (- sensor-y row)))]
     (if (> dist-x-remaining 0)
-      [(- sensor-x dist-x-remaining) (+ sensor-x dist-x-remaining)]
+      (let [start (max 0 (- sensor-x dist-x-remaining))
+            end (max 0 (+ sensor-x dist-x-remaining))]
+        (if (= [0 0] [start end]) [] [start end]))
       [])))
 
 (defn intersect? [[a-start a-end] [b-start b-end]]
@@ -113,6 +115,6 @@
   (let [input (slurp (str (io/resource "day15.txt")))]
     (->> (str/split-lines input)
          (reduce parse-line {})
-         (find-distress-beacon2)
+         (find-distress-beacon)
          ))
   )
